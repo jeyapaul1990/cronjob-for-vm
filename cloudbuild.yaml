@@ -1,0 +1,8 @@
+steps:
+- name: 'gcr.io/cloud-builders/gcloud'
+  entrypoint: 'bash'
+  args:
+  - '-c'
+  - |
+    gcloud compute scp crontab.txt crontab-testing:/tmp/crontab.txt
+    gcloud compute ssh crontab-testing --command "crontab /tmp/crontab.txt"
